@@ -4,6 +4,7 @@ import com.amazon.util.CommonUtil;
 import com.amazon.util.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,14 +16,19 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "email")
+    @FindBy(id = "ap_email")
     private WebElement ipLoginId;
 
-    @FindBy(id = "passwd")
+    @FindBy(id = "ap_password")
     private WebElement ipPassword;
 
-    @FindBy(id = "SubmitLogin")
+    @FindBy(id = "signInSubmit")
     private WebElement btnSubmit;
+
+    @FindBy(id = "continue")
+    private WebElement btnContinue;
+
+
 
     public void enterUserId(String userName){
         ipLoginId.sendKeys(userName);
@@ -34,10 +40,12 @@ public class LoginPage {
 
     public void loginToAmazon(String userId, String pwd){
         enterUserId(userId);
+        btnContinue.click();
         CommonUtil.waitForElementVisible(driver, ipPassword, "Password", Constants.mediumWait);
         enterPassword(pwd);
 
     }
+
 
     public ShoppingPage doLogin(){
         btnSubmit.click();

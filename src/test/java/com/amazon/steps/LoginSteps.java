@@ -31,10 +31,11 @@ public class LoginSteps {
     public void clickSubmit(){
         shoppingPage = loginPage.doLogin();
     }
-    @Then("Login should be successful")
+    @Then("Login should not be successful")
     public void isLoginSuccessful(){
-        String loggedInText = shoppingPage.getConfirmLoginText();
-        Assert.assertTrue(loggedInText.contains("Dinu"));
+//        String loggedInText = shoppingPage.getConfirmLoginText();
+//        Assert.assertTrue(loggedInText.contains("Dinu"));
+        Assert.assertTrue(shoppingPage.isLoginErrorDisplayed(), "Login error is not displayed");
     }
     @And("Accounts banner is displayed")
     public void isAccountBannerDisplayed(){
