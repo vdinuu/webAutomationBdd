@@ -19,12 +19,13 @@ public class LoginSteps {
     @Given("User is on login page")
     public void goToLoginPage(){
         String homePageTitle = homePage.getHomePageTitle();
-        Assert.assertEquals(homePageTitle, "Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in");
-        loginPage = homePage.navigateToLoginPage();
+        Assert.assertEquals(homePageTitle, "Swag Labs");
+//        loginPage = homePage.navigateToLoginPage();
     }
 
     @When("user enters username as {string} and password as {string}")
     public void enterLoginCredentials(String userName, String password){
+        loginPage = new LoginPage(DriverFactory.getDriver());
         loginPage.loginToAmazon(userName, password);
     }
     @And("clicks on Submit button")

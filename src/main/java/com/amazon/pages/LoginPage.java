@@ -16,10 +16,10 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "ap_email")
+    @FindBy(id = "user-name")
     private WebElement ipLoginId;
 
-    @FindBy(id = "ap_password")
+    @FindBy(id = "password")
     private WebElement ipPassword;
 
     @FindBy(id = "signInSubmit")
@@ -40,7 +40,7 @@ public class LoginPage {
 
     public void loginToAmazon(String userId, String pwd){
         enterUserId(userId);
-        btnContinue.click();
+//        btnContinue.click();
         CommonUtil.waitForElementVisible(driver, ipPassword, "Password", Constants.mediumWait);
         enterPassword(pwd);
 

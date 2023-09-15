@@ -34,7 +34,10 @@ public class Hooks {
 
     @Before(order = 2)
     public void launchBrowser(Scenario scenario){
-        String browserName = prop.getProperty("browser");
+        String browserName = System.getProperty("browser");
+        if(null==browserName){
+            browserName = prop.getProperty("browser");
+        }
         String url = prop.getProperty("testUrl");
         driverFactory = new DriverFactory();
         driver = driverFactory.initDriver(browserName, url);
